@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 55cbd9be4b6930b43af798e1a042e282
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 257362
+  packageName: Bro Audio
+  packageVersion: 3.2.1
+  assetPath: Assets/BroAudio/AGENTS.md
+  uploadId: 933378
