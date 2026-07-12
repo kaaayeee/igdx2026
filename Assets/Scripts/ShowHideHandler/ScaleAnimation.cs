@@ -3,23 +3,27 @@ using DG.Tweening;
 
 public class ScaleAnimation : AnimationBase
 {
-    [SerializeField] private Vector3 showScale = Vector3.one;
+    [Tooltip("Pengali dari scale asli prefab. 1 = kembali ke ukuran desain.")]
+    [SerializeField] private float shownMultiplier = 1f;
     [SerializeField] private Vector3 hiddenScale = Vector3.zero;
-    [SerializeField] private Ease showEase = Ease.OutBack;
+    [SerializeField] private Ease showEase = Ease.OutBack;   // pop overshoot
     [SerializeField] private Ease hideEase = Ease.InBack;
 
-    private Tween scaleTween;
+    [SerializeField, ReadOnly] private Vector3 baseScale;
 
-    protected override void PlayShow()
+    protected override void CaptureBaseline()
     {
-        scaleTween?.Kill();
-        transform.localScale = hiddenScale;
-        scaleTween = transform.DOScale(showScale, duration).SetEase(showEase).SetUpdate(runWhilePaused);
+        baseScale = transform.localScale;
     }
 
-    protected override void PlayHide()
+    protected override Tween PlayShow()
     {
-        scaleTween?.Kill();
-        scaleTween = transform.DOScale(hiddenScale, duration).SetEase(hideEase).SetUpdate(runWhilePaused);
+        transform.localScale = hiddenScale;
+        return transform.DOScale(baseScale * shownMultiplier, duration).SetEase(showEase);
+    }
+
+    protected override Tween PlayHide()
+    {
+        return transform.DOScale(hiddenScale, duration).SetEase(hideEase);
     }
 }
