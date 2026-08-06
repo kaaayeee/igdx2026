@@ -67,6 +67,10 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
+    "dotnet.defaultSolution": "igdx.slnx",
     "dotnet.enableWorkspaceBasedDevelopment": false,
-    "dotnet.defaultSolution": "igdx.slnx"
+    "dotrush.roslyn.projectOrSolutionFiles": [
+        "c:\\Important Files\\Universitas Brawijaya'25\\projects\\UnityGameProjects\\igdx2026\\igdx.slnx",
+        "c:\\Important Files\\Universitas Brawijaya'25\\projects\\UnityGameProjects\\igdx2026\\igdx2026.slnx"
+    ]
 }
