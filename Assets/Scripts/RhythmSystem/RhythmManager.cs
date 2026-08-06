@@ -2,20 +2,13 @@ using UnityEngine;
 
 public class RhythmManager : MonoBehaviour
 {
-    public static RhythmManager Instance;
+    public static RhythmManager Instance { get; private set; }
 
-    [Header("Song Settings")]
-    public float bpm = 120f;
-    public float songDelay = 2f;
+    [Header("Audio Setup")]
     public AudioSource audioSource;
-    
-    [Header("Note Settings")]
-    public float noteSpeed = 5f;
-    
-    [HideInInspector] public float songPosition;
-    [HideInInspector] public float songPositionInBeats;
-    
-    private float secPerBeat;
+    public float songDelay = 2f;
+
+    public float CurrentSongTime { get; private set; }
     private float dspSongTime;
     private bool hasStarted = false;
 
@@ -27,7 +20,6 @@ public class RhythmManager : MonoBehaviour
 
     private void Start()
     {
-        secPerBeat = 60f / bpm;
         Invoke(nameof(StartSong), songDelay);
     }
 
@@ -35,20 +27,17 @@ public class RhythmManager : MonoBehaviour
     {
         if (hasStarted)
         {
-            songPosition = (float)(AudioSettings.dspTime - dspSongTime);
-            songPositionInBeats = songPosition / secPerBeat;
+            CurrentSongTime = (float)(AudioSettings.dspTime - dspSongTime);
         }
     }
 
     private void StartSong()
     {
         dspSongTime = (float)AudioSettings.dspTime;
-        
         if (audioSource != null && audioSource.clip != null)
         {
             audioSource.Play();
         }
-        
         hasStarted = true;
     }
 }

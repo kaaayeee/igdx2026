@@ -1,20 +1,17 @@
 using UnityEngine;
-using TMPro;
-using UnityEngine.UI;
+using TMPro; // Menggunakan TextMeshPro karena standar industri
 
 public class RhythmUIManager : MonoBehaviour
 {
-    public static RhythmUIManager Instance;
+    public static RhythmUIManager Instance { get; private set; }
 
     [Header("UI References")]
-    public TextMeshProUGUI feedbackText;
-    public Slider styleMeterSlider;
-
-    [Header("Style Meter Settings")]
-    public float maxStyle = 100f;
-    public float startingStyle = 50f;
+    [Tooltip("Text untuk menampilkan Perfect, Good, Miss")]
+    public TextMeshProUGUI feedbackText; 
     
-    private float currentStyle;
+    [Header("Settings")]
+    public float displayDuration = 1f;
+    private float hideTimer = 0f;
 
     private void Awake()
     {
@@ -24,40 +21,32 @@ public class RhythmUIManager : MonoBehaviour
 
     private void Start()
     {
-        currentStyle = startingStyle;
+        if (feedbackText != null) feedbackText.text = "";
+    }
 
-        if (styleMeterSlider != null)
+    private void Update()
+    {
+        if (hideTimer > 0)
         {
-            styleMeterSlider.maxValue = maxStyle;
-            styleMeterSlider.value = currentStyle;
-        }
-        
-        if (feedbackText != null)
-        {
-            feedbackText.text = "";
+            hideTimer -= Time.deltaTime;
+            if (hideTimer <= 0 && feedbackText != null)
+            {
+                feedbackText.text = "";
+            }
         }
     }
 
-    public void HitFeedback(string judgment)
+    public void ShowFeedback(string text)
     {
         if (feedbackText != null)
         {
-            feedbackText.text = judgment + "!";
+            feedbackText.text = text;
+            hideTimer = displayDuration;
             
-            if (judgment.Contains("Perfect")) feedbackText.color = Color.yellow;
-            else if (judgment.Contains("Good")) feedbackText.color = Color.green;
-            else if (judgment.Contains("Miss")) feedbackText.color = Color.red;
+            // Jika punya Animator untuk text, bisa di-trigger di sini
+            // contoh: feedbackText.GetComponent<Animator>().SetTrigger("Pop");
         }
-
-        if (judgment.Contains("Perfect")) currentStyle += 5f;
-        else if (judgment.Contains("Good")) currentStyle += 2f;
-        else if (judgment.Contains("Miss")) currentStyle -= 10f;
-
-        currentStyle = Mathf.Clamp(currentStyle, 0, maxStyle);
-
-        if (styleMeterSlider != null)
-        {
-            styleMeterSlider.value = currentStyle;
-        }
+        
+        Debug.Log("Hit Feedback: " + text);
     }
 }
