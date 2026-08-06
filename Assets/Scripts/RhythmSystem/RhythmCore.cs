@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
+using UnityEngine.Events;
 
 public enum BeatType { Tap, Hold }
 
@@ -24,6 +25,13 @@ public class RhythmCore : MonoBehaviour
     [Header("Input")]
     [Tooltip("Aksi input untuk Tap. Default: Spasi, Gamepad Bawah, atau Sentuh/Klik")]
     public InputAction tapAction = new InputAction("Tap", type: InputActionType.Button);
+
+    [Header("Events (Animasi dll)")]
+    [Tooltip("Berjalan HANYA saat pemain berhasil nge-tap sesuai beat (Perfect/Good)")]
+    public UnityEvent onHitSuccess;
+    
+    [Tooltip("Berjalan SETIAP KALI tombol ditekan (meskipun meleset)")]
+    public UnityEvent onAnyTap;
 
     [Header("Judgement Windows")]
     [Tooltip("Waktu dalam detik untuk Perfect")]
@@ -94,8 +102,15 @@ public class RhythmCore : MonoBehaviour
         }
 
         // Input Handling (Cross-Platform)
-        if (tapAction.WasPressedThisFrame()) HandleTap(currentTime);
-        else if (tapAction.WasReleasedThisFrame()) HandleRelease(currentTime);
+        if (tapAction.WasPressedThisFrame()) 
+        {
+            onAnyTap?.Invoke();
+            HandleTap(currentTime);
+        }
+        else if (tapAction.WasReleasedThisFrame()) 
+        {
+            HandleRelease(currentTime);
+        }
     }
 
     public void RegisterBeat(BeatType type, float timeToHit, float holdDuration = 0f)
@@ -176,6 +191,7 @@ public class RhythmCore : MonoBehaviour
         {
             string suffix = isHoldStart ? " (Hold Start)" : (isHoldRelease ? " (Hold Release)" : "");
             if (uiManager != null) uiManager.ShowFeedback(judgment + suffix);
+            onHitSuccess?.Invoke();
         }
     }
 
