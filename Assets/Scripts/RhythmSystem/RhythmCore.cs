@@ -17,7 +17,13 @@ public class BeatData
 
 public class RhythmCore : MonoBehaviour
 {
-    public static RhythmCore Instance { get; private set; }
+    [Header("Dependencies")]
+    [SerializeField] private RhythmManager rhythmManager;
+    [SerializeField] private RhythmUIManager uiManager;
+
+    [Header("Input")]
+    [Tooltip("Aksi input untuk Tap. Default: Spasi, Gamepad Bawah, atau Sentuh/Klik")]
+    public InputAction tapAction = new InputAction("Tap", type: InputActionType.Button);
 
     [Header("Judgement Windows")]
     [Tooltip("Waktu dalam detik untuk Perfect")]
@@ -32,14 +38,32 @@ public class RhythmCore : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null) Instance = this;
-        else Destroy(gameObject);
+        if (rhythmManager == null) rhythmManager = FindObjectOfType<RhythmManager>();
+        if (uiManager == null) uiManager = FindObjectOfType<RhythmUIManager>();
+
+        // Tambahkan binding default jika kosong agar cross-platform
+        if (tapAction.bindings.Count == 0)
+        {
+            tapAction.AddBinding("<Keyboard>/space");
+            tapAction.AddBinding("<Gamepad>/buttonSouth"); // Tombol A(Xbox)/Cross(PS)
+            tapAction.AddBinding("<Pointer>/press");       // Touchscreen tap atau Mouse klik kiri
+        }
+    }
+
+    private void OnEnable()
+    {
+        tapAction?.Enable();
+    }
+
+    private void OnDisable()
+    {
+        tapAction?.Disable();
     }
 
     private void Update()
     {
-        if (RhythmManager.Instance == null) return;
-        float currentTime = RhythmManager.Instance.CurrentSongTime;
+        if (rhythmManager == null) return;
+        float currentTime = rhythmManager.CurrentSongTime;
 
         // Auto Miss Check
         for (int i = activeBeats.Count - 1; i >= 0; i--)
@@ -69,17 +93,14 @@ public class RhythmCore : MonoBehaviour
             }
         }
 
-        // Input Handling
-        if (Keyboard.current != null)
-        {
-            if (Keyboard.current.spaceKey.wasPressedThisFrame) HandleTap(currentTime);
-            else if (Keyboard.current.spaceKey.wasReleasedThisFrame) HandleRelease(currentTime);
-        }
+        // Input Handling (Cross-Platform)
+        if (tapAction.WasPressedThisFrame()) HandleTap(currentTime);
+        else if (tapAction.WasReleasedThisFrame()) HandleRelease(currentTime);
     }
 
     public void RegisterBeat(BeatType type, float timeToHit, float holdDuration = 0f)
     {
-        float targetTime = RhythmManager.Instance.CurrentSongTime + timeToHit;
+        float targetTime = rhythmManager.CurrentSongTime + timeToHit;
         
         activeBeats.Add(new BeatData
         {
@@ -154,12 +175,12 @@ public class RhythmCore : MonoBehaviour
         else
         {
             string suffix = isHoldStart ? " (Hold Start)" : (isHoldRelease ? " (Hold Release)" : "");
-            if (RhythmUIManager.Instance != null) RhythmUIManager.Instance.ShowFeedback(judgment + suffix);
+            if (uiManager != null) uiManager.ShowFeedback(judgment + suffix);
         }
     }
 
     private void Miss()
     {
-        if (RhythmUIManager.Instance != null) RhythmUIManager.Instance.ShowFeedback("Miss");
+        if (uiManager != null) uiManager.ShowFeedback("Miss");
     }
 }

@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class RhythmManager : MonoBehaviour
 {
-    public static RhythmManager Instance { get; private set; }
-
     [Header("Audio Setup")]
     public AudioSource audioSource;
     public float songDelay = 2f;
@@ -11,12 +9,6 @@ public class RhythmManager : MonoBehaviour
     public float CurrentSongTime { get; private set; }
     private float dspSongTime;
     private bool hasStarted = false;
-
-    private void Awake()
-    {
-        if (Instance == null) Instance = this;
-        else Destroy(gameObject);
-    }
 
     private void Start()
     {

@@ -1,10 +1,8 @@
 using UnityEngine;
-using TMPro; // Menggunakan TextMeshPro karena standar industri
+using TMPro; 
 
 public class RhythmUIManager : MonoBehaviour
 {
-    public static RhythmUIManager Instance { get; private set; }
-
     [Header("UI References")]
     [Tooltip("Text untuk menampilkan Perfect, Good, Miss")]
     public TextMeshProUGUI feedbackText; 
@@ -12,12 +10,6 @@ public class RhythmUIManager : MonoBehaviour
     [Header("Settings")]
     public float displayDuration = 1f;
     private float hideTimer = 0f;
-
-    private void Awake()
-    {
-        if (Instance == null) Instance = this;
-        else Destroy(gameObject);
-    }
 
     private void Start()
     {
@@ -42,9 +34,6 @@ public class RhythmUIManager : MonoBehaviour
         {
             feedbackText.text = text;
             hideTimer = displayDuration;
-            
-            // Jika punya Animator untuk text, bisa di-trigger di sini
-            // contoh: feedbackText.GetComponent<Animator>().SetTrigger("Pop");
         }
         
         Debug.Log("Hit Feedback: " + text);
