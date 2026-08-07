@@ -158,7 +158,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: AnimController_Nenek
+  m_Name: Nenek_AnimController
   serializedVersion: 6
   m_AnimatorParameters:
   - m_Name: DoSuccess
