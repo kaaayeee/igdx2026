@@ -33,6 +33,9 @@ public class RhythmCore : MonoBehaviour
     [Tooltip("Berjalan SETIAP KALI tombol ditekan (meskipun meleset)")]
     public UnityEvent onAnyTap;
 
+    [Tooltip("Berjalan saat player miss beat")]
+    public UnityEvent onMiss;
+
     [Header("Judgement Windows")]
     [Tooltip("Waktu dalam detik untuk Perfect")]
     public float perfectWindow = 0.08f;
@@ -198,5 +201,6 @@ public class RhythmCore : MonoBehaviour
     private void Miss()
     {
         if (uiManager != null) uiManager.ShowFeedback("Miss");
+        onMiss?.Invoke();
     }
 }
