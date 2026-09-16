@@ -735,52 +735,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 84740786272681487, guid: af4766beea5567742846d315024540a4, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8003063247745309319, guid: af4766beea5567742846d315024540a4, type: 3}
-      insertIndex: 2
-      addedObject: {fileID: 7770964867063643417}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af4766beea5567742846d315024540a4, type: 3}
 --- !u!224 &7770964867063643415 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8183393502723946470, guid: af4766beea5567742846d315024540a4, type: 3}
   m_PrefabInstance: {fileID: 7770964867063643414}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &7770964867063643416 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8003063247745309319, guid: af4766beea5567742846d315024540a4, type: 3}
-  m_PrefabInstance: {fileID: 7770964867063643414}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &7770964867063643417
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7770964867063643416}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1be94b39d52c114458c1785a98021535, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UIMainMenu
-  layer: 0
-  spawnBehavior: 2
-  configData:
-    pauseGame: 0
-    enableInput: 0
-  recordInHistory: 1
-  isBackToPreviousUI: 1
-  backTo: {fileID: 0}
-  detached: 0
-  pooled: 0
-  poolSize: 4
-  dynamicPooling: 1
-  transitionController: {fileID: 0}
-  firstSelected: {fileID: 0}
-  isActive: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
