@@ -12,6 +12,7 @@ namespace Ohm.UISystem
         public static readonly Type UIGameplay = typeof(UIGameplay);
         public static readonly Type UIInformation = typeof(UIInformation);
         public static readonly Type UIMainMenu = typeof(UIMainMenu);
+        public static readonly Type UIMusicSelection = typeof(UIMusicSelection);
         public static readonly Type UIPauseMenu = typeof(UIPauseMenu);
         public static readonly Type UISettings = typeof(UISettings);
         public static readonly Type UITesting = typeof(UITesting);
