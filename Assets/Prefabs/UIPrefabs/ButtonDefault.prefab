@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 4576864974605106434}
   - component: {fileID: 1913934286989709587}
   - component: {fileID: 7943323685857677734}
-  - component: {fileID: 5509881275958484964}
-  - component: {fileID: 3242334333131229038}
+  - component: {fileID: 5972005609301231645}
+  - component: {fileID: 1341708665817989929}
   m_Layer: 5
   m_Name: ButtonDefault
   m_TagString: Untagged
@@ -62,14 +62,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.91764706, g: 0.9372549, b: 0.9372549, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -100,10 +100,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_NormalColor: {r: 0.91764706, g: 0.9372549, b: 0.9372549, a: 1}
+    m_HighlightedColor: {r: 1, g: 0.60784316, b: 0.31764707, a: 1}
+    m_PressedColor: {r: 0.7490196, g: 0.7882353, b: 0.81960785, a: 1}
+    m_SelectedColor: {r: 1, g: 0.60784316, b: 0.31764707, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -123,7 +123,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &5509881275958484964
+--- !u!114 &5972005609301231645
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -132,73 +132,64 @@ MonoBehaviour:
   m_GameObject: {fileID: 4017552541174404335}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4e3b9ed220573e46820047b08b78d53, type: 3}
+  m_Script: {fileID: 11500000, guid: bb8dababd16289045ad57c18a23f21d5, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ButtonBehaviour
-  onClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onHoverEnter:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3242334333131229038}
-        m_TargetAssemblyTypeName: UIScaleAnimation, Assembly-CSharp
-        m_MethodName: TriggerShow
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onHoverExit:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3242334333131229038}
-        m_TargetAssemblyTypeName: UIScaleAnimation, Assembly-CSharp
-        m_MethodName: TriggerHide
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &3242334333131229038
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4017552541174404335}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5ee59b9ff8a77247b7056635ebc920f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UIScaleAnimation
-  triggerMode: 0
+  m_EditorClassIdentifier: Assembly-CSharp::Ohm.UISystem.Transitions.ScaleTransition
+  disableAfterHide: 0
   runWhilePaused: 1
-  duration: 0.2
-  showScale: {x: 1.2, y: 1.2, z: 1.2}
-  hiddenScale: {x: 1, y: 1, z: 1}
-  showEase: 27
-  hideEase: 27
+  showConfig:
+    targetScale: {x: 1.05, y: 1.05, z: 1.05}
+    duration: 0.2
+    ease: 27
+  hideConfig:
+    targetScale: {x: 1, y: 1, z: 1}
+    duration: 0.2
+    ease: 6
+--- !u!114 &1341708665817989929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4017552541174404335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 5972005609301231645}
+          m_TargetAssemblyTypeName: Ohm.UISystem.Transitions.ScaleTransition, Assembly-CSharp
+          m_MethodName: TriggerShow
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 5972005609301231645}
+          m_TargetAssemblyTypeName: Ohm.UISystem.Transitions.ScaleTransition, Assembly-CSharp
+          m_MethodName: TriggerHide
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &6980182840736595086
 GameObject:
   m_ObjectHideFlags: 0
@@ -273,8 +264,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4282332197
+  m_fontColor: {r: 0.14509805, g: 0.20392157, b: 0.24705882, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -297,11 +288,12 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 0
   m_fontSizeMax: 0
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0

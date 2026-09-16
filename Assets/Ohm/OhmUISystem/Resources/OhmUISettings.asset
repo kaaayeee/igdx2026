@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24e07dd015368764aa0700074570fbe9, type: 3}
+  m_Name: OhmUISettings
+  m_EditorClassIdentifier: Assembly-CSharp::Ohm.UISystem.OhmUISettings
+  autoBootstrap: 1
+  canvasPrefab: {fileID: 103069561605431597, guid: a089af04f2effec4596bbafd3467f359, type: 3}
+  defaultUIPrefabs:
+  - {fileID: 1336415620645516168, guid: f9eb66eb02c43ae49a9d87080ecb1a35, type: 3}
+  - {fileID: 596500447576191692, guid: 7f3b673d043d08b459330edc60dcf263, type: 3}
+  - {fileID: 1974258242882313330, guid: da18df10293eaeb4a93b01c22c4a283a, type: 3}
+  - {fileID: 3083179105946225456, guid: e1ef7d378cb4015488c984cb1a346d5e, type: 3}
+  - {fileID: 844548820002510792, guid: 43b662e89fbbf394e8024ee76ba7e281, type: 3}
+  - {fileID: 2706380423432921068, guid: be8e62072da77d64580b6f24d598b507, type: 3}
+  - {fileID: 84740786272681487, guid: af4766beea5567742846d315024540a4, type: 3}
+  - {fileID: 7947608938932903442, guid: 2bcb6e5b49c18354f8bd90f5b522176f, type: 3}
+  - {fileID: 5114871023634490822, guid: 0ff0fbce9cffec04bb198f6f422a9530, type: 3}
+  startUI:
+    typeName: UIGameplay, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  closeAllOnSceneChange: 0
