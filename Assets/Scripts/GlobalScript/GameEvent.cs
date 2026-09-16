@@ -1,16 +1,11 @@
 using UnityEngine;
+using System;
 
-public class GameEvent : MonoBehaviour
+public static class GameEvent
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    #region [Audio]
+    public static Action<float> onValueChangeMaster;
+    public static Action<float> onValueChangeBGM;
+    public static Action<float> onValueChangeSFX;
+    #endregion
 }

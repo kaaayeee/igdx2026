@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: Burung Kaka Tua
   m_EditorClassIdentifier: Assembly-CSharp::MusicTrackDataSO
   musicName: Burung Kakak Tua
-  stageSceneName: 
+  stageScene:
+    _sceneAsset: {fileID: 102900000, guid: c1b8751bf9409074ebe2a2cdc7675348, type: 3}
+    _scenePath: 
+    _sceneName: 
   selectedSprite: {fileID: -2459526643646780484, guid: 56f8b881e8c956940871d702a26c100f, type: 3}
   unselectedSprite: {fileID: -6142708150011039083, guid: 55b80504b62715e4cae9e01e5d26c1ab, type: 3}
