@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: WipeEffect
   m_EditorClassIdentifier: 
   transitionMaterial: {fileID: 2100000, guid: 65655cb89e9f4ce4fa86266a448caf84, type: 2}
-  duration: 2
+  duration: 1
   fadeOutDirection: 0
   fadeInDirection: 1
   smoothness: 1
