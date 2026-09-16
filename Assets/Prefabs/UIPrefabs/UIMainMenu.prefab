@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4593487299431688815}
   - component: {fileID: 5108669953688278716}
   - component: {fileID: 5617609767136521746}
+  - component: {fileID: 760769330429883394}
   m_Layer: 5
   m_Name: TitleGroup
   m_TagString: Untagged
@@ -32,9 +33,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 8183393502723946470}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -450, y: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 500, y: 0}
   m_SizeDelta: {x: 1000, y: 550}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5108669953688278716
@@ -75,6 +76,35 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &760769330429883394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1754876498935887101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f62271fb949c8b4c811dc0d804b35c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Ohm.UISystem.Transitions.SlideTransition
+  disableAfterHide: 0
+  runWhilePaused: 1
+  showConfig:
+    slideDirection: 1
+    customOffset: 1
+    offset: {x: -513.2, y: 0}
+    duration: 0.5
+    ease: 9
+    targetPosition: {x: 0, y: 0, z: 0}
+  hideConfig:
+    slideDirection: 1
+    customOffset: 1
+    offset: {x: -513.2, y: 0}
+    duration: 0.5
+    ease: 8
+    targetPosition: {x: 0, y: 0, z: 0}
+  originalPos: {x: 0, y: 0, z: 0}
 --- !u!1 &8003063247745309319
 GameObject:
   m_ObjectHideFlags: 0
@@ -87,16 +117,14 @@ GameObject:
   - component: {fileID: 7556587680500258827}
   - component: {fileID: 8004426003633170282}
   - component: {fileID: 7674408749305810603}
-  - component: {fileID: 2953052148661455161}
   - component: {fileID: 6380213251073916983}
-  - component: {fileID: 4951466691812469327}
   m_Layer: 5
   m_Name: UIMainMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8183393502723946470
 RectTransform:
   m_ObjectHideFlags: 0
@@ -110,10 +138,10 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4593487299431688815}
+  - {fileID: 1697706665489680049}
   - {fileID: 6614202280841898787}
   - {fileID: 8370479942223157936}
   - {fileID: 1672180899524849031}
-  - {fileID: 1697706665489680049}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -153,9 +181,12 @@ MonoBehaviour:
   pooled: 0
   poolSize: 4
   dynamicPooling: 1
-  transitionController: {fileID: 0}
+  transitionController: {fileID: 7674408749305810603}
   firstSelected: {fileID: 0}
   isActive: 0
+  startButton: {fileID: 7480909531277140283}
+  optionsButton: {fileID: 5202274754887487656}
+  exitButton: {fileID: 3140325385063894185}
 --- !u!114 &7674408749305810603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,38 +202,15 @@ MonoBehaviour:
   showOnEnable: 0
   disableAfterHide: 1
   transitions:
-  - transition: {fileID: 2953052148661455161}
-    showDelay: 0
+  - transition: {fileID: 6560915823499655296}
+    showDelay: 0.5
     hideDelay: 0
---- !u!114 &2953052148661455161
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8003063247745309319}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f62271fb949c8b4c811dc0d804b35c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UISlideAnimation
-  disableAfterHide: 0
-  runWhilePaused: 1
-  showConfig:
-    slideDirection: 0
-    customOffset: 0
-    offset: {x: 1920, y: 1080}
-    duration: 0.5
-    ease: 9
-    targetPosition: {x: 0, y: 0, z: 0}
-  hideConfig:
-    slideDirection: 0
-    customOffset: 0
-    offset: {x: 1920, y: 1080}
-    duration: 0.5
-    ease: 8
-    targetPosition: {x: 0, y: 0, z: 0}
-  originalPos: {x: 0, y: 0, z: 0}
+  - transition: {fileID: 8425875262808852755}
+    showDelay: 1
+    hideDelay: 0
+  - transition: {fileID: 1725886270814060068}
+    showDelay: 1
+    hideDelay: 0
 --- !u!225 &6380213251073916983
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -215,33 +223,6 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &4951466691812469327
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8003063247745309319}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1be94b39d52c114458c1785a98021535, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UIMainMenu
-  layer: 0
-  spawnBehavior: 2
-  configData:
-    pauseGame: 0
-    enableInput: 0
-  recordInHistory: 1
-  isBackToPreviousUI: 1
-  backTo: {fileID: 0}
-  detached: 0
-  pooled: 0
-  poolSize: 4
-  dynamicPooling: 1
-  transitionController: {fileID: 0}
-  firstSelected: {fileID: 0}
-  isActive: 0
 --- !u!1001 &715471302221492381
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -377,11 +358,33 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e98ac9180860bad46be681a569a0e8d4, type: 3}
+--- !u!114 &6560915823499655296 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5972005609301231645, guid: e98ac9180860bad46be681a569a0e8d4, type: 3}
+  m_PrefabInstance: {fileID: 715471302221492381}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb8dababd16289045ad57c18a23f21d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Ohm.UISystem.Transitions.ScaleTransition
 --- !u!224 &6614202280841898787 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5919841752256945086, guid: e98ac9180860bad46be681a569a0e8d4, type: 3}
   m_PrefabInstance: {fileID: 715471302221492381}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7480909531277140283 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7943323685857677734, guid: e98ac9180860bad46be681a569a0e8d4, type: 3}
+  m_PrefabInstance: {fileID: 715471302221492381}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!1001 &2742247545747226894
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -505,11 +508,33 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e98ac9180860bad46be681a569a0e8d4, type: 3}
+--- !u!114 &5202274754887487656 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7943323685857677734, guid: e98ac9180860bad46be681a569a0e8d4, type: 3}
+  m_PrefabInstance: {fileID: 2742247545747226894}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!224 &8370479942223157936 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5919841752256945086, guid: e98ac9180860bad46be681a569a0e8d4, type: 3}
   m_PrefabInstance: {fileID: 2742247545747226894}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8425875262808852755 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5972005609301231645, guid: e98ac9180860bad46be681a569a0e8d4, type: 3}
+  m_PrefabInstance: {fileID: 2742247545747226894}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb8dababd16289045ad57c18a23f21d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Ohm.UISystem.Transitions.ScaleTransition
 --- !u!1001 &4977400210126943801
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -638,6 +663,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5919841752256945086, guid: e98ac9180860bad46be681a569a0e8d4, type: 3}
   m_PrefabInstance: {fileID: 4977400210126943801}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1725886270814060068 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5972005609301231645, guid: e98ac9180860bad46be681a569a0e8d4, type: 3}
+  m_PrefabInstance: {fileID: 4977400210126943801}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb8dababd16289045ad57c18a23f21d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Ohm.UISystem.Transitions.ScaleTransition
 --- !u!1001 &5019533923103694095
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -770,10 +806,58 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 6980182840736595086, guid: e98ac9180860bad46be681a569a0e8d4, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4017552541174404335, guid: e98ac9180860bad46be681a569a0e8d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2299214936523666634}
   m_SourcePrefab: {fileID: 100100000, guid: e98ac9180860bad46be681a569a0e8d4, type: 3}
 --- !u!224 &1697706665489680049 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5919841752256945086, guid: e98ac9180860bad46be681a569a0e8d4, type: 3}
   m_PrefabInstance: {fileID: 5019533923103694095}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3140325385063894185 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7943323685857677734, guid: e98ac9180860bad46be681a569a0e8d4, type: 3}
+  m_PrefabInstance: {fileID: 5019533923103694095}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8244333083092142560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+--- !u!1 &8244333083092142560 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4017552541174404335, guid: e98ac9180860bad46be681a569a0e8d4, type: 3}
+  m_PrefabInstance: {fileID: 5019533923103694095}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2299214936523666634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8244333083092142560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f62271fb949c8b4c811dc0d804b35c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Ohm.UISystem.Transitions.SlideTransition
+  disableAfterHide: 0
+  runWhilePaused: 1
+  showConfig:
+    slideDirection: 1
+    customOffset: 0
+    offset: {x: 1920, y: 1080}
+    duration: 0.5
+    ease: 9
+    targetPosition: {x: 0, y: 0, z: 0}
+  hideConfig:
+    slideDirection: 1
+    customOffset: 0
+    offset: {x: 1920, y: 1080}
+    duration: 0.5
+    ease: 8
+    targetPosition: {x: 0, y: 0, z: 0}
+  originalPos: {x: 0, y: 0, z: 0}

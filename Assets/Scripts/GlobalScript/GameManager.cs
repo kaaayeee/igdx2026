@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-// using PixeLadder.EasyTransition;
+using PixeLadder.EasyTransition;
 using Ami.BroAudio;
 
 [Serializable]
@@ -11,17 +11,16 @@ public class SceneEntry
     public SceneReference scene;
 }
 
-public class GameManager : MonoBehaviour
+public class GameManager : SingletonMonoBehaviour<GameManager>
 {
-    public static GameManager Instance { get; private set; }
 
     [Header("Scenes")]
     [Tooltip("Drag scene asset ke sini. Jangan lupa daftarkan juga di Build Settings.")]
     [SerializeField] private SceneEntry[] _scenes;
 
     [Header("Transitions")]
-    // [SerializeField] private TransitionEffect _defaultTransition;
-    // [SerializeField] private TransitionEffect _restartTransition;
+    [SerializeField] private TransitionEffect _defaultTransition;
+    [SerializeField] private TransitionEffect _restartTransition;
 
     [Header("Audio")]
     public SoundID bgmMainMenu;
@@ -46,16 +45,9 @@ public class GameManager : MonoBehaviour
 
     // ---------- Lifecycle ----------
 
-    void Awake()
+    protected override void Awake()
     {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
+        base.Awake();
         ApplyDefaultVolume();
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
@@ -136,53 +128,53 @@ public class GameManager : MonoBehaviour
         return null;
     }
 
-    // public void LoadScene(SceneType type) => LoadScene(type, _defaultTransition);
+    public void LoadScene(SceneType type) => LoadScene(type, _defaultTransition);
 
-    // public void LoadScene(SceneType type, TransitionEffect effect)
-    // {
-    //     var scene = GetScene(type);
-    //     if (scene == null || !scene.IsValid)
-    //     {
-    //         Debug.LogError($"[GameManager] Scene '{type}' belum di-assign.", this);
-    //         return;
-    //     }
+    public void LoadScene(SceneType type, TransitionEffect effect)
+    {
+        var scene = GetScene(type);
+        if (scene == null || !scene.IsValid)
+        {
+            Debug.LogError($"[GameManager] Scene '{type}' belum di-assign.", this);
+            return;
+        }
 
-    //     LoadScenePath(scene.Path, effect);
-    // }
+        LoadScenePath(scene.Path, effect);
+    }
 
-    // public void LoadMainMenu() => LoadScene(SceneType.MainMenu);
+    public void LoadMainMenu() => LoadScene(SceneType.MainMenu);
 
-    // public void RestartScene()
-    // {
-    //     LoadScenePath(
-    //         SceneManager.GetActiveScene().path,
-    //         _restartTransition != null ? _restartTransition : _defaultTransition);
-    // }
+    public void RestartScene()
+    {
+        LoadScenePath(
+            SceneManager.GetActiveScene().path,
+            _restartTransition != null ? _restartTransition : _defaultTransition);
+    }
 
-    // private void LoadScenePath(string path, TransitionEffect effect)
-    // {
-    //     if (_isLoadingScene)
-    //     {
-    //         Debug.LogWarning("[GameManager] Scene sedang dimuat, permintaan diabaikan.", this);
-    //         return;
-    //     }
+    private void LoadScenePath(string path, TransitionEffect effect)
+    {
+        if (_isLoadingScene)
+        {
+            Debug.LogWarning("[GameManager] Scene sedang dimuat, permintaan diabaikan.", this);
+            return;
+        }
 
-    //     _isLoadingScene = true;
+        _isLoadingScene = true;
 
-    //     // Pause bisa menyisakan timeScale 0 — kembalikan sebelum pindah scene.
-    //     Time.timeScale = 1f;
+        // Pause bisa menyisakan timeScale 0 — kembalikan sebelum pindah scene.
+        Time.timeScale = 1f;
 
-    //     if (SceneTransitioner.Instance != null)
-    //     {
-    //         SceneTransitioner.Instance.LoadScene(path, effect);
-    //     }
-    //     else
-    //     {
-    //         Debug.LogWarning(
-    //             "[GameManager] SceneTransitioner tidak ditemukan. Fallback tanpa transisi.", this);
-    //         SceneManager.LoadScene(path);
-    //     }
-    // }
+        if (SceneTransitioner.Instance != null)
+        {
+            SceneTransitioner.Instance.LoadScene(path, effect);
+        }
+        else
+        {
+            Debug.LogWarning(
+                "[GameManager] SceneTransitioner tidak ditemukan. Fallback tanpa transisi.", this);
+            SceneManager.LoadScene(path);
+        }
+    }
 
     // ---------- Audio ----------
 

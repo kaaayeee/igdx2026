@@ -4,16 +4,28 @@ using Ohm.UISystem;
 
 public class UIMainMenu : UIBase
 {
-    //[Header("References")]
-    // [SerializeField] private Button closeButton;
+    [SerializeField] private Button startButton;
+    [SerializeField] private Button optionsButton;
+    [SerializeField] private Button exitButton;
 
-    // public override void Show(bool instant = false)
-    // {
-    //     base.Show(instant);
-    // }
-
-    // public override void Hide(bool instant = false)
-    // {
-    //     base.Hide(instant);
-    // }
+    void Start()
+    {
+        SetUpButton();
+    }
+    public void SetUpButton()
+    {
+        startButton.onClick.AddListener(() =>
+        {
+            GameManager.Instance.LoadScene(SceneType.SelectMusic);
+            Debug.Log("Start Game Clicked");
+        });
+        optionsButton.onClick.AddListener(() =>
+        {
+            // Open options menu
+        });
+        exitButton.onClick.AddListener(() =>
+        {
+            Application.Quit();
+        });
+    }
 }

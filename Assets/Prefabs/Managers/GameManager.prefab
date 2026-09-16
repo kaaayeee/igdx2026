@@ -1,0 +1,81 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6187596701055601885
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6580121075285275605}
+  - component: {fileID: 7214455179620775481}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6580121075285275605
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6187596701055601885}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7214455179620775481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6187596701055601885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b22cf783488ba4349b5b17614776196d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  dontDestroyOnLoad: 1
+  _scenes:
+  - type: 0
+    scene:
+      _sceneAsset: {fileID: 102900000, guid: 880131d8788802e4fa71ed076cf520cc, type: 3}
+      _scenePath: Assets/Scenes/MainMenu.unity
+      _sceneName: MainMenu
+  - type: 2
+    scene:
+      _sceneAsset: {fileID: 102900000, guid: bbe88ebe4def499408a4ccf4cdd6748c, type: 3}
+      _scenePath: Assets/Scenes/MusicSelection.unity
+      _sceneName: MusicSelection
+  - type: 1
+    scene:
+      _sceneAsset: {fileID: 102900000, guid: c1b8751bf9409074ebe2a2cdc7675348, type: 3}
+      _scenePath: Assets/Scenes/CoreMechanicTesting.unity
+      _sceneName: CoreMechanicTesting
+  _defaultTransition: {fileID: 0}
+  _restartTransition: {fileID: 0}
+  bgmMainMenu:
+    _entity: {fileID: 0}
+    ID: 0
+    <DebugObject>k__BackingField: {fileID: 6187596701055601885}
+  bgmGameplay:
+    _entity: {fileID: 0}
+    ID: 0
+    <DebugObject>k__BackingField: {fileID: 6187596701055601885}
+  ui_click:
+    _entity: {fileID: 0}
+    ID: 0
+    <DebugObject>k__BackingField: {fileID: 6187596701055601885}
+  defaultMaster: 0.5
+  defaultBGM: 0.5
+  defaultSFX: 0.5
+  _bgmFadeTime: 0.5
